@@ -1,41 +1,36 @@
-#include <stdio.h>
 #include <cs50.h>
+#include <stdio.h>
 #include <math.h>
 
-int main(void) {
-    float change;
-    float roundedChange;
-    int count = 0;
+int main (void) {
+    float dollars;
+    int change;
+    int counter = 0;
 
     do {
-        printf("O hai! How much change is owed?");
-        change = get_float();
+        printf("O hai! How much change is owed?\n");
+        dollars = get_float();
     }
-    while (change < 0);
+    while (dollars < 0);
 
-    change = change * 100;
-    roundedChange = round(change);
+    change = round(dollars * 100);
 
-    while (roundedChange >= 25)
-    {
-        count++;
-        roundedChange -= 25;
+    while (change >= 25) {
+        counter++;
+        change -= 25;
     }
-    while (roundedChange >= 10)
-    {
-        count++;
-        roundedChange -= 10;
+    while (change >= 10) {
+        counter++;
+        change -= 10;
     }
-    while (roundedChange >= 5)
-    {
-        count++;
-        roundedChange -= 5;
+    while (change >= 5) {
+        counter++;
+        change -= 5;
     }
-    while (roundedChange >= 1)
-    {
-        count++;
-        roundedChange -= 1;
+    while (change >= 1) {
+        counter++;
+        change -= 1;
     }
 
-    printf("%i\n", count);
+    printf("%i\n", counter);
 }
